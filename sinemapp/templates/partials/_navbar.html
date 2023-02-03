@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home_page' %}"><i class="fa fa-film" style="font-size:32px;color:white;margin-right:20px">Movieapp</i></a>
+    <button
+      class="navbar-toggler collapsed"
+      type="button" 
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">        
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'movies_in_theaters' %}">Vizyondakiler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'upcoming_movies' %}">Yakında</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_of_movies' %}">Tüm Filmler</a>
+        </li> 
+      </ul>
+
+      {% if user.is_authenticated %}
+        <li class="nav-item dropdown navbar-nav me-3 mb-2 mb-lg-0">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.username}}
+            {% if user.profile.avatar %}
+              <img style="width:2em; height:2em;" class="img-profile rounded-circle" src="{{user.profile.avatar.url}}" />
+            {% endif %}
+          </a>
+          
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Profil</a></li>
+            <li><a class="dropdown-item" href="{% url 'watch_list' %}">WatchList</a></li>
+            <li><a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item dropdown navbar-nav me-3 mb-2 mb-lg-0">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user-circle" style="font-size:24px"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+            <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>   
+          </ul>
+        </li>
+        {% endif %}
+
+      <form class="d-flex" action="{% url 'list_of_movies' %}" method="GET">
+        <input class="form-control me-2" type="text" placeholder="Search" name="q" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+      
+    </div>
+  </div>
+</nav>
+
+

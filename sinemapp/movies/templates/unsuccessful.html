@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block content %}
+
+<div class="container mt-5">
+  <h1 class="mb-3 text-gray-900">Sonuçlar</h1>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Başarısız Arama!</h4>
+            <p>Aradığınız kelime olan -{{searced_word|upper}}- ile ilgili sonuç bulamadık!</p>
+            <hr>
+            <a class="btn btn-danger" href="{% url 'home_page' %}">Anasayfaya Git</a>
+            <a class="btn btn-danger" href="{% url 'list_of_movies' %}">Tüm Filmlere Git</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

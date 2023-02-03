@@ -1,0 +1,18 @@
+<h2 style="font-weight:bold; font-size:40px;margin-top: 100px;">Cast</h2>
+        <div class=" mt-0 row row-cols-1 row-cols-md-5 g-4">
+           {% for person in people %}
+            <div class="col">
+                <div class="card h-100">
+                <img src="{{person.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5  class="card-title">{{person.full_name}}</h5>
+                    <h6>({{person.get_duty_type_display}})</h6>
+                    <hr>
+                    
+                </div>
+                </div>
+            </div>
+
+           {% endfor %} 
+            
+        </div>

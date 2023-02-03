@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block content %}
+
+<div class="container mt-5">
+  <h1 class="mb-3 text-gray-900">Vizyondakiler</h1>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        {% for movie in movies %}
+          
+          <div class="col-xl-4 col-md-6 mb-4">
+            {% include 'partials/_movie.html' %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

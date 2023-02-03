@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="mb-3 text-gray-900">Watch List</h1>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          
+          {% for film in watchList %}
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{film.image_name.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">{{film.title}}</h5>
+                        <hr>
+                        <button type="button" class="btn btn-danger">remove from watchlist</button>
+                        
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div> 
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+

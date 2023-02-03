@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="card h-100" style="width: 22rem;">
+  <img src="{{movie.image_name.url}}" alt="">
+  <div class="card-body">
+    <h1 class="card-title">{{movie.title}}</h1>
+    
+  </div>
+  <ul class="list-group list-group-flush">
+    {% if movie.is_released %}
+      <li class="list-group-item"><i class="fa fa-star" style="margin-right:10px;color:blue ">Imdb Rating:</i>{{movie.rating}}</li>
+    {% endif %}
+    <li class="list-group-item">Çıkış Tarihi - {{movie.date}}</li>
+    <li class="list-group-item">{{movie.language}}</li>
+  </ul>
+  <div class="card-body">
+    
+    <a href="{% url 'movie_details' movie.slug %}" class="card-link btn btn-success" >Detay Bilgi</a>
+    <button type="button" class="btn btn-primary">add watchList</button>
+  </div>
+</div>
+
